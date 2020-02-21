@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CardDeckPage } from './card-deck/card-page.page'
 import { CardService } from './shared/card.service';
 import { CardListComponent } from './components/card-list.component';
+import { CardListingPage } from './card-listing/card-listing.page';
 
 @NgModule({
     imports: [
@@ -15,6 +16,7 @@ import { CardListComponent } from './components/card-list.component';
         HttpClientModule,
         RouterModule.forChild([
             { path: 'card-deck', component: CardDeckPage },
+            { path: 'card-listing', component: CardListingPage },
             { path: '', redirectTo: '/tabs/card/card-deck' }
         ])
     ],
@@ -23,6 +25,7 @@ import { CardListComponent } from './components/card-list.component';
     ],
     declarations: [
         CardDeckPage,
+        CardListingPage,
         CardListComponent
     ]
 })
