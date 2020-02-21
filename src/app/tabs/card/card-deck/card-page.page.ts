@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+
 import { CardService } from '../shared/card.service';
+import { CardDeck } from '../shared/card.model';
 
 @Component({
     selector: 'app-card-deck',
@@ -8,9 +10,13 @@ import { CardService } from '../shared/card.service';
 })
 export class CardDeckPage implements OnInit {
     
+    // Constants
+    private readonly ALLOWED_DECKS = ['classes', 'factions', 'qualities', 
+        'types', 'races']    
+
     // Attributes
 
-    private cardDecks: string[] = []
+    private cardDecks: CardDeck[] = []
 
     // Lifecycle
 
@@ -26,7 +32,18 @@ export class CardDeckPage implements OnInit {
 
     private fetchCardDecks(){
         this.cardService.getAllCardDecks().subscribe(data => {
-            this.cardDecks = data
+            this.extractAllowedDecks(data)
+        })
+    }
+
+    private extractAllowedDecks(cardDecks: CardDeck[]) {
+        this.ALLOWED_DECKS.forEach((deckName) => {
+            this.cardDecks.push(
+                {
+                    name: deckName,
+                    types: cardDecks[deckName]
+                }
+            )
         })
     }
     

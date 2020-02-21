@@ -13,7 +13,8 @@
                 <img [src]="'assets/images/' + cardDeck + '.png'">
             </ion-thumbnail>
             <ion-label>
-                <h2>{{cardDeck}}</h2>
+                <h2>{{cardDeck.name}}</h2>
+                <app-card-list></app-card-list>
             </ion-label>
         </ion-item>
     </ion-list>
