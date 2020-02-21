@@ -1,1 +1,14 @@
-<p>I am card list component</p>
+<ion-list *ngIf="items.length > 0">
+    <ion-list-header>
+        <ion-label>{{listName}}</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of items">
+        <ion-thumbnail slot="start">
+            <img [src]="'assets/images/' + item + '.png'">
+        </ion-thumbnail>
+        <ion-label>
+            <h2>{{item}}</h2>
+            <app-card-list></app-card-list>
+        </ion-label>
+    </ion-item>
+</ion-list>
