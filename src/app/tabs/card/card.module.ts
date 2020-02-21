@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
 import { CardDeckPage } from './card-deck/card-page.page'
+import { CardService } from './shared/card.service';
 
 @NgModule({
     imports: [
@@ -13,6 +14,9 @@ import { CardDeckPage } from './card-deck/card-page.page'
             { path: 'card-deck', component: CardDeckPage },
             { path: '', redirectTo: '/tabs/card/card-deck' }
         ])
+    ],
+    providers: [
+        CardService
     ],
     declarations: [
         CardDeckPage
