@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 
 import { CardService } from '../shared/card.service';
 import { Card } from '../shared/card.model';
+import { LoadingService } from '../shared/loading.service';
 
 @Component({
   selector: 'app-card-listing',
@@ -21,18 +22,22 @@ export class CardListingPage {
   // Lifecycle
 
   constructor(private route: ActivatedRoute, 
-    private cardService: CardService) { }
+    private cardService: CardService,
+    private loading: LoadingService) { }
 
   ionViewWillEnter() {
     this.cardDeckGroup = this.route.snapshot.paramMap.get('cardDeckGroup')
     this.cardDeck = this.route.snapshot.paramMap.get('cardDeck')
 
+    this.loading.show()
+
     this.cardService.getCardsByDeck(this.cardDeckGroup, this.cardDeck)
       .subscribe((cards: Card[]) => {
         this.cards = cards.map((card: Card) => {
-          card.text = this.cardService.handleDescription(card.text)
-          return card
-        })
+          card.text = this.cardService.handleDescription(card.text);
+          return card;
+        });
+        this.loading.hide()
       })
   }
 

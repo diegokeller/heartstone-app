@@ -1,6 +1,9 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>Card Details: {{cardId}}</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -21,7 +24,7 @@
                 Player class: <em>{{card?.playerClass}}</em>
             </ion-label>
             <p [innerHTML]="card?.text" style="clear: both;">
-                
+
             </p>
         </ion-card-content>
     </ion-card>

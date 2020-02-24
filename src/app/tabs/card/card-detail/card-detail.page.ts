@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../shared/card.service';
 import { Card } from '../shared/card.model';
 import { CardDeckModule } from '../card.module';
+import { LoadingService } from '../shared/loading.service';
 
 @Component({
     selector: 'app-card-detail',
@@ -13,17 +14,22 @@ export class CardDetailPage implements OnInit {
     cardId: string
     card: Card = undefined
     
-    constructor(private router: ActivatedRoute, private cardService: CardService){
+    constructor(private router: ActivatedRoute, private cardService: CardService, private loading: LoadingService){
 
     }
 
-    ngOnInit(): void {
+    ngOnInit() {
+
+        this.loading.show()
+
         this.cardId = this.router.snapshot.paramMap.get('cardId');
         this.cardService.getCardById(this.cardId)
             .subscribe(c => {
                 this.card = c
                 this.card.text = this.cardService.handleDescription(c.text)
+                this.loading.hide()
             })
+
     }
 
     setDefaultImage() {

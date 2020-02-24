@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{cardDeckGroup}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +20,8 @@
       </ion-card-header>
       <ion-card-content>
         <div [innerHTML]="card?.text"></div>
-        <ion-button size="medium" expand="full" [href]="'/tabs/card/card-detail/' + card.cardId">See details...</ion-button>
+        <ion-button size="medium" expand="full" [href]="'/tabs/card/card-detail/' + card.cardId">See details...
+        </ion-button>
       </ion-card-content>
     </ion-card>
   </ion-list>

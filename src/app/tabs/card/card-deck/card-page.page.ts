@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 import { CardService } from '../shared/card.service';
 import { CardDeck } from '../shared/card.model';
+import { LoadingService } from '../shared/loading.service';
 
 @Component({
     selector: 'app-card-deck',
@@ -20,7 +21,7 @@ export class CardDeckPage implements OnInit {
 
     // Lifecycle
 
-    constructor(private cardService: CardService){
+    constructor(private cardService: CardService, private loading: LoadingService){
 
     }
 
@@ -31,8 +32,10 @@ export class CardDeckPage implements OnInit {
     // Private Methods
 
     private fetchCardDecks(){
+        this.loading.show()
         this.cardService.getAllCardDecks().subscribe(data => {
             this.extractAllowedDecks(data)
+            this.loading.hide()
         })
     }
 
