@@ -20,8 +20,8 @@
             <ion-label class="ion-float-left ion-margin-bottom">
                 Player class: <em>{{card?.playerClass}}</em>
             </ion-label>
-            <p style="clear: both;">
-                {{card?.text}}
+            <p [innerHTML]="card?.text" style="clear: both;">
+                
             </p>
         </ion-card-content>
     </ion-card>

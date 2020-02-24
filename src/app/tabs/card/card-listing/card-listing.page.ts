@@ -29,7 +29,10 @@ export class CardListingPage {
 
     this.cardService.getCardsByDeck(this.cardDeckGroup, this.cardDeck)
       .subscribe((cards: Card[]) => {
-        this.cards = cards
+        this.cards = cards.map((card: Card) => {
+          card.text = this.cardService.handleDescription(card.text)
+          return card
+        })
       })
   }
 

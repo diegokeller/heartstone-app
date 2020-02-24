@@ -12,14 +12,18 @@ export class CardDetailPage implements OnInit {
     
     cardId: string
     card: Card = undefined
-
+    
     constructor(private router: ActivatedRoute, private cardService: CardService){
 
     }
 
     ngOnInit(): void {
         this.cardId = this.router.snapshot.paramMap.get('cardId');
-        this.cardService.getCardById(this.cardId).subscribe(c => this.card = c)
+        this.cardService.getCardById(this.cardId)
+            .subscribe(c => {
+                this.card = c
+                this.card.text = this.cardService.handleDescription(c.text)
+            })
     }
 
     setDefaultImage() {

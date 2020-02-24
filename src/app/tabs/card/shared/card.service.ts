@@ -45,4 +45,8 @@ export class CardService {
                 map(res => res[0])
             )
     }
+
+    public handleDescription(text: string): string {
+        return text ? text.replace(new RegExp("\\\\n", "g"), " ") : 'No Description'
+    }
 }
