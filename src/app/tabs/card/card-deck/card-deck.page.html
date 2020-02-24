@@ -3,10 +3,12 @@
         <ion-title>Card Decks</ion-title>
     </ion-toolbar>
 </ion-header>
+
 <ion-content>
-    <app-card-list *ngFor="let cardDeck of cardDecks" 
-        [listName]="cardDeck.name" 
-        [items]="cardDeck.types"
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <app-card-list *ngFor="let cardDeck of cardDecks" [listName]="cardDeck.name" [items]="cardDeck.types"
         [navigateTo]="generateUrl">
     </app-card-list>
 </ion-content>
