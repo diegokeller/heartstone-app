@@ -8,6 +8,7 @@ import { CardDeckPage } from './card-deck/card-page.page'
 import { CardService } from './shared/card.service';
 import { CardListComponent } from './components/card-list.component';
 import { CardListingPage } from './card-listing/card-listing.page';
+import { CardDetailPage } from './card-detail/card-detail.page';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { CardListingPage } from './card-listing/card-listing.page';
         HttpClientModule,
         RouterModule.forChild([
             { path: 'card-deck', component: CardDeckPage },
-            { path: 'card-listing', component: CardListingPage },
+            { path: ':cardDeckGroup/:cardDeck', component: CardListingPage },
+            { path: 'card-detail/:cardId', component: CardDetailPage },
             { path: '', redirectTo: '/tabs/card/card-deck' }
         ])
     ],
@@ -26,7 +28,8 @@ import { CardListingPage } from './card-listing/card-listing.page';
     declarations: [
         CardDeckPage,
         CardListingPage,
-        CardListComponent
+        CardListComponent,
+        CardDetailPage
     ]
 })
 export class CardDeckModule {

@@ -5,6 +5,8 @@
 </ion-header>
 <ion-content>
     <app-card-list *ngFor="let cardDeck of cardDecks" 
-        [listName]="cardDeck.name" [items]="cardDeck.types">
+        [listName]="cardDeck.name" 
+        [items]="cardDeck.types"
+        [navigateTo]="generateUrl">
     </app-card-list>
 </ion-content>

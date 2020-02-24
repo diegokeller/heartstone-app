@@ -16,7 +16,7 @@ export class CardDeckPage implements OnInit {
 
     // Attributes
 
-    private cardDecks: CardDeck[] = []
+    cardDecks: CardDeck[] = []
 
     // Lifecycle
 
@@ -45,6 +45,10 @@ export class CardDeckPage implements OnInit {
                 }
             )
         })
+    }
+
+    generateUrl(cardDeckGroup: string, cardDeck: string): string {
+        return `/tabs/card/${cardDeckGroup}/${cardDeck}`
     }
     
 }

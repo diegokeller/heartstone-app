@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { of as ObservableOf, Observable } from 'rxjs'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
-import { CardDeck } from './card.model'
+import { CardDeck, Card } from './card.model'
 
 @Injectable()
 export class CardService {
@@ -11,6 +11,10 @@ export class CardService {
 
     private readonly HS_API_URL = 'https://omgvamp-hearthstone-v1.p.rapidapi.com'
     private readonly API_KEY = '3eedaaffdbmsha80ca405cd23528p13d94bjsn95c7d94e84a7'
+
+    private readonly headers = new HttpHeaders(
+        {'x-rapidapi-key': this.API_KEY}
+    )
 
     // Attributes
 
@@ -23,11 +27,14 @@ export class CardService {
     // Public methods
 
     public getAllCardDecks(): Observable<CardDeck[]>{
-        const headers = new HttpHeaders(
-            {'x-rapidapi-key': this.API_KEY}
-        )
         return this.http.get<CardDeck[]>(`${this.HS_API_URL}/info`, 
-            {headers: headers}
+            {headers: this.headers}
+        )
+    }
+
+    public getCardsByDeck(cardDeckGroup: string, cardDeck: string): Observable<Card[]> {
+        return this.http.get<Card[]>(`${this.HS_API_URL}/cards/${cardDeckGroup}/${cardDeck}`, 
+            {headers: this.headers}
         )
     }
 }
