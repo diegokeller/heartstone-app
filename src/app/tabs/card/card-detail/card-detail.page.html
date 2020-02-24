@@ -1,1 +1,28 @@
-Card Detail Page
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Card Details: {{cardId}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngIf="card">
+        <ion-card-header>
+            <div class="ion-text-center">
+                <img [src]="card?.img" (error)="setDefaultImage()">
+            </div>
+            <ion-card-subtitle>{{card?.cardSet}}</ion-card-subtitle>
+            <ion-card-title>{{card?.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-label class="ion-float-right ion-margin-bottom">
+                Type: <em>{{card?.type}}</em>
+            </ion-label>
+            <ion-label class="ion-float-left ion-margin-bottom">
+                Player class: <em>{{card?.playerClass}}</em>
+            </ion-label>
+            <p style="clear: both;">
+                {{card?.text}}
+            </p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

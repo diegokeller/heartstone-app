@@ -17,8 +17,8 @@ import { CardDetailPage } from './card-detail/card-detail.page';
         HttpClientModule,
         RouterModule.forChild([
             { path: 'card-deck', component: CardDeckPage },
-            { path: ':cardDeckGroup/:cardDeck', component: CardListingPage },
             { path: 'card-detail/:cardId', component: CardDetailPage },
+            { path: ':cardDeckGroup/:cardDeck', component: CardListingPage },
             { path: '', redirectTo: '/tabs/card/card-deck' }
         ])
     ],
