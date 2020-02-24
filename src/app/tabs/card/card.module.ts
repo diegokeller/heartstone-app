@@ -10,6 +10,7 @@ import { CardListComponent } from './components/card-list.component';
 import { CardListingPage } from './card-listing/card-listing.page';
 import { CardDetailPage } from './card-detail/card-detail.page';
 import { LoadingService } from './shared/loading.service';
+import { ToastService } from './shared/toast.service';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { LoadingService } from './shared/loading.service';
     ],
     providers: [
         CardService,
-        LoadingService
+        LoadingService,
+        ToastService
     ],
     declarations: [
         CardDeckPage,

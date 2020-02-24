@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { CardService } from '../shared/card.service';
 import { CardDeck } from '../shared/card.model';
 import { LoadingService } from '../shared/loading.service';
+import { ToastService } from '../shared/toast.service';
 
 @Component({
     selector: 'app-card-deck',
@@ -21,7 +22,9 @@ export class CardDeckPage implements OnInit {
 
     // Lifecycle
 
-    constructor(private cardService: CardService, private loading: LoadingService){
+    constructor(private cardService: CardService, 
+        private loading: LoadingService,
+        private toaster: ToastService){
 
     }
 
@@ -36,7 +39,10 @@ export class CardDeckPage implements OnInit {
         this.cardService.getAllCardDecks().subscribe(data => {
             this.extractAllowedDecks(data)
             this.loading.hide()
-        })
+        }, ((error) => {
+            this.toaster.presentToastWithOK('Error', `Error loading card decks. `)
+            this.loading.hide()
+        }))
     }
 
     private extractAllowedDecks(cardDecks: CardDeck[]) {

@@ -4,6 +4,7 @@ import { CardService } from '../shared/card.service';
 import { Card } from '../shared/card.model';
 import { CardDeckModule } from '../card.module';
 import { LoadingService } from '../shared/loading.service';
+import { ToastService } from '../shared/toast.service';
 
 @Component({
     selector: 'app-card-detail',
@@ -14,7 +15,10 @@ export class CardDetailPage implements OnInit {
     cardId: string
     card: Card = undefined
     
-    constructor(private router: ActivatedRoute, private cardService: CardService, private loading: LoadingService){
+    constructor(private router: ActivatedRoute, 
+        private cardService: CardService, 
+        private loading: LoadingService,
+        private toaster: ToastService){
 
     }
 
@@ -28,7 +32,10 @@ export class CardDetailPage implements OnInit {
                 this.card = c
                 this.card.text = this.cardService.handleDescription(c.text)
                 this.loading.hide()
-            })
+            }, ((error) => {
+                this.toaster.presentTemporaryToast(`Error loading card. `)
+                this.loading.hide()
+            }))
 
     }
 
