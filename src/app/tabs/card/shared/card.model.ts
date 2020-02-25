@@ -15,5 +15,6 @@ export interface Card {
     playerClass: string,
     img: string,
     imgGold: string,
-    locale: string
+    locale: string,
+    favorite: boolean
 }

@@ -52,4 +52,8 @@ export class CardListingPage {
     this.cards = event
   }
 
+  favoriteCard(card) {
+    card.favorite = !card.favorite
+  }
+
 }
