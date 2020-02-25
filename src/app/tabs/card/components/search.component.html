@@ -1,1 +1,4 @@
 <ion-searchbar animated (ionChange)="handleSearch($event)"></ion-searchbar>
+<div>
+    <ion-spinner text-center *ngIf="spinner" [hidden]="!loading" style="width: 100%;"></ion-spinner>
+</div>

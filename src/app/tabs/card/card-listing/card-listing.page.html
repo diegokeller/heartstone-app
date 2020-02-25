@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content padding>
-  <app-search [items]="copyOfCards" [filteredProperty]="'name'" (searchCompleted)="hydrateCards($event)"></app-search>
+  <app-search [items]="copyOfCards" [filteredProperty]="'name'" 
+    (searchCompleted)="hydrateCards($event)" [spinner]="true">
+  </app-search>
   <ion-list *ngIf="cards.length > 0">
     <ion-card *ngFor="let card of cards">
       <ion-card-header text-wrap>

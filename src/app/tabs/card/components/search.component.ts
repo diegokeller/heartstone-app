@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators'
 
 import { Card } from '../shared/card.model';
 
@@ -16,10 +16,13 @@ export class SearchComponent {
 
     @Input() items: any[] = []
     @Input() filteredProperty: string
+    @Input() spinner: boolean = true
+    loading: boolean = false
 
     @Output() searchCompleted: EventEmitter<any[]> = new EventEmitter()
 
     handleSearch(event: any) {
+        this.loading = true
         this.searchSubject.next(event.target.value)
     }
 
@@ -34,6 +37,9 @@ export class SearchComponent {
             })
 
             this.searchCompleted.emit(filteredItems)
+
+            this.loading = false
+            
         })
     }
 
