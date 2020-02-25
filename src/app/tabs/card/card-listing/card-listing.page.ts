@@ -19,6 +19,7 @@ export class CardListingPage {
   cardDeck: string
 
   cards: Card[] = []
+  copyOfCards: Card[] = []
 
   // Lifecycle
 
@@ -39,11 +40,16 @@ export class CardListingPage {
           card.text = this.cardService.handleDescription(card.text);
           return card;
         });
+        this.copyOfCards = Array.from(this.cards)
         this.loading.hide()
       }, ((error) => {
         this.toaster.presentToastWithOK('Error', `Error loading cards. `)
         this.loading.hide()
       }))
+  }
+
+  hydrateCards(event){
+    this.cards = event
   }
 
 }
