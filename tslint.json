@@ -9,6 +9,10 @@
     "deprecation": {
       "severity": "warn"
     },
+    "no-trailing-whitespace": [true, "always"],
+    "prefer-const": [true, {"destructuring": "any"}],
+    "semicolon": [true, "always"],
+    "space-before-function-paren": [true, "never"],
     "import-blacklist": [
       true,
       "rxjs/Rx"

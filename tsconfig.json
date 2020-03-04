@@ -22,5 +22,8 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
   }
 }

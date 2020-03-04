@@ -12,6 +12,7 @@ import { CardDetailPage } from './card-detail/card-detail.page';
 import { LoadingService } from './shared/loading.service';
 import { ToastService } from './shared/toast.service';
 import { SearchComponent } from './components/search.component';
+import { FavoriteCardStore } from './shared/card-favorite-store';
 
 @NgModule({
     imports: [
@@ -28,7 +29,8 @@ import { SearchComponent } from './components/search.component';
     providers: [
         CardService,
         LoadingService,
-        ToastService
+        ToastService,
+        FavoriteCardStore
     ],
     declarations: [
         CardDeckPage,
