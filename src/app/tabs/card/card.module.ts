@@ -13,6 +13,8 @@ import { LoadingService } from './shared/loading.service';
 import { ToastService } from './shared/toast.service';
 import { SearchComponent } from './components/search.component';
 import { FavoriteCardStore } from './shared/card-favorite-store';
+import { CardFavoritePage } from './card-favorite/card-favorite.page';
+import { CardCardComponent } from './components/card-card.component';
 
 @NgModule({
     imports: [
@@ -21,6 +23,7 @@ import { FavoriteCardStore } from './shared/card-favorite-store';
         HttpClientModule,
         RouterModule.forChild([
             { path: 'card-deck', component: CardDeckPage },
+            { path: 'card-favorite', component: CardFavoritePage },
             { path: 'card-detail/:cardId', component: CardDetailPage },
             { path: ':cardDeckGroup/:cardDeck', component: CardListingPage },
             { path: '', redirectTo: '/tabs/card/card-deck' }
@@ -37,7 +40,9 @@ import { FavoriteCardStore } from './shared/card-favorite-store';
         CardListingPage,
         CardListComponent,
         CardDetailPage,
-        SearchComponent
+        CardFavoritePage,
+        SearchComponent,
+        CardCardComponent
     ]
 })
 export class CardDeckModule {

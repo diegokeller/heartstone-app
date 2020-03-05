@@ -83,10 +83,6 @@ export class CardListingPage {
     this.cards = event;
   }
 
-  favoriteCard(card) {
-    this.favoriteCardStore.toggleCard(card);
-  }
-
   isFavoriteCard(card: Card): boolean {
     return this.favoriteCards[card.cardId] !== undefined;
   }
